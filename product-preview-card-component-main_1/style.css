@@ -1,0 +1,173 @@
+
+
+:root {
+  --CLR-PRIMARY-400: hsl(158, 36%, 37%);
+  --CLR-PRIMARY-500: hsl(158, 36%, 20%);
+  --CLR-SECONDARY-200: hsl(30, 38%, 92%);
+
+  --CLR-NEUTRAL-900: hsl(212, 21%, 14%);
+  --CLR-NEUTRAL-400: hsl(228, 12%, 48%);
+  --CLR-NEUTRAL-100: hsl(0, 0%, 100%);
+
+  --FF-ACCENT: 'Fraunces', serif;
+  --FF-BASE: 'Montserrat', sans-serif;
+  
+  --FW-REGULAR: 500;
+  --FW-BOLD: 700;
+}
+
+
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.7;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+
+/* General styling */
+
+body {
+  font-family: var(--FF-BASE);
+  font-weight: var(--FW-REGULAR);
+  font-size: 0.875rem;
+  color: var(--CLR-NEUTRAL-400);
+  background-color: var(--CLR-SECONDARY-200);
+
+  /* for this project only */
+  display: grid;
+  min-height: 100vh;
+  place-content: center;
+  margin: 1rem;
+}
+
+h1, h2, h3 {
+  line-height: 1;
+}
+
+/* utilities */
+
+.flex-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* button */
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  gap: .75rem;
+  justify-content: center;
+  align-items: center;
+
+  border: 0;
+  border-radius: .5rem;
+  padding: .75em 1.5em;
+  background-color: var(--CLR-PRIMARY-400);
+  color: var(--CLR-NEUTRAL-100);
+  font-weight: var(--FW-BOLD);
+  font-size: 0.925rem;
+
+}
+
+.button:is(:hover, :focus) {
+  background-color: var(--CLR-PRIMARY-500);
+}
+
+.button[data-icon='shopping-cart']::before {
+  content: '';
+  background-image: url(images/icon-cart.svg);
+  width: 15px;
+  height: 16px;
+}
+
+/* product styles */
+
+.product {
+  /* we place local scope variable available to children of the .product class element  */
+  --CONTENT-PADDING: 1.5rem;
+  --CONTENT-SPACING: 1rem;
+
+  /* to achieve 2 columns with media query(600px), otherwise grid doesnt change anything on its own */
+  display: grid;
+  background-color: var(--CLR-NEUTRAL-100);
+  border-radius: .5rem;
+  overflow: hidden;
+  max-width: 600px;
+}
+
+@media (min-width: 600px) {
+  .product {
+    --CONTENT-PADDING: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product__content {
+  padding: var(--CONTENT-PADDING);
+  display: grid;
+  gap: var(--CONTENT-SPACING);
+}
+
+.product__category {
+  font-size: .8125rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.product__title {
+  font-size: 2rem;
+  font-family: var(--FF-ACCENT);
+  color: var(--CLR-NEUTRAL-900);
+}
+
+.product__price {
+  font-size: 2rem;
+  font-family: var(--FF-ACCENT);
+  color: var(--CLR-PRIMARY-400);
+}
+
+
+
+
+
+
+
+
